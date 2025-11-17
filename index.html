@@ -20,7 +20,7 @@
 
     <link rel="canonical" href="/" />
     <link rel="shortlink" href="/" />
-    <meta property="og:site_name" content="The University of Arizona" />
+    <meta property="og:site_name" content="Barista Mastery" />
     <meta property="og:url" content="/" />
     <meta name="twitter:card" content="summary" />
    
@@ -54,8 +54,8 @@
                         "addressCountry": "US"
                     }
                 },
-                "url": "https://www.arizona.edu/",
-                "name": "University of Arizona The University of Arizona"
+                "url": "/",
+                "name": "Barista Mastery"
             }]
         }
     </script>
@@ -366,12 +366,12 @@
     <li><a href="/">Home</a></li>
     <li><a href="#about">About Us</a></li>
     <li class="has-dropdown">
-      <a href="#courses" class="dropdown-toggle">Courses</a>
-      <ul class="dropdown">
+      <a href="bm-brochure-umb-pdf-045.pdf" download class="nav-link">Courses</a>
+    <!---  <ul class="dropdown">
         <li><a href="#barista">Barista </a></li>
         <li><a href="#latte-art">Roasting</a></li>
         <li><a href="#advanced">Refresher</a></li>
-      </ul>
+      --></ul>
     </li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -520,13 +520,14 @@
 
 
           <li class="nav-item dropdown">
-            <button class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Courses</button>
-            <div class="dropdown-menu">
+            <a href="bm-brochure-umb-pdf-045.pdf" download class="nav-link">Courses</a>
+
+          <!--- <div class="dropdown-menu">
               <a href="/" class="dropdown-item">Barista</a>
               <a href="/" class="dropdown-item">Roasting </a>
               <a href="/" class="dropdown-item">Refresher</a>
               <a href="/" class="dropdown-item">Soft Skills</a>
-            </div>
+            </div>--> 
           </li>
 
           <li class="nav-item">
@@ -590,13 +591,15 @@
     <!-- CTA Buttons (Login & Register) -->
     <div class="col-lg-3 d-none d-lg-flex justify-content-end">
       <div class="d-flex gap-2">
-        <a class="btn btn-outline-red px-4" href="/">Login</a>
-        <div class="dropdown">
-          <button class="btn btn-red dropdown-toggle px-4" data-bs-toggle="dropdown" aria-expanded="false">Register</button>
+
+        <button class="btn btn-red dropdown-toggle px-4" data-bs-toggle="dropdown" aria-expanded="false">Register</button>
           <ul class="dropdown-menu dropdown-menu-end">
             <li><a class="dropdown-item text-center" href="/">Individual</a></li>
             <li><a class="dropdown-item text-center" href="/">Student</a></li>
           </ul>
+        <a class="btn btn-outline-red px-4" href="/">Login</a>
+        <div class="dropdown">
+          
         </div>
       </div>
     </div>
@@ -888,7 +891,7 @@ setInterval(() => {
   <!-- Main Image -->
   <div class="field field--name-field-az-media field--type-entity-reference field--label-hidden field__item">
     <img loading="lazy" class="img-fluid image-style-az-large" 
-         src="WhatsApp Image 2025-11-15 at 12.03.42.jpeg" 
+         src="1763400769884-22990a8e-b5fa-4585-980b-c658c4a653ea_1.png" 
          width="1140" height="713" 
          alt="University of Arizona student looking into a telescope" />
   </div>
@@ -1377,6 +1380,10 @@ setInterval(() => {
 .col-md-3 p {
   color: #fff;
   font-size: 0.9rem;
+}
+footer,
+footer * {
+  color: #fff !important;
 }
 
 
