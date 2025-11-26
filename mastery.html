@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BARISTA MASTERY - CRAFT YOUR GRIND</title>
+<meta name="description" content="BARISTA MASTERY .">
+ <link rel="icon" href="images\bm-logo-vertical-fuego-roast.min.png" type="image/x-icon">
+  <!-- Or PNG format -->
+  <link rel="icon" href="images\bm-logo-vertical-fuego-roast.min.png" type="image/png">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Nunito:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+:root{
+  --espresso:#2e2b28;
+  --caramel:#c6a87d;
+  --cream:#faf6f2;
+  --muted:#757070;
+  --glass: rgba(255,255,255,0.6);
+}
+
+/* Base */
+html, body {height:100%; font-family:'Nunito',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial; background:var(--cream); color:var(--espresso); overflow-x:hidden;}
+.heading{font-family:'Playfair Display',serif;}
+
+/* HERO */
+.hero{position:relative;height:600px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#000;}
+.hero-layer{position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;}
+.hero-back{background-image:url('https://images.unsplash.com/photo-1581592184535-8c168b3c6b2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1400'); z-index:1; filter:brightness(0.6);}
+.hero-mid{background-image:url('https://images.unsplash.com/photo-1511920170033-f8396924c348?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1400'); z-index:2; opacity:0.3;}
+.hero-front{background:radial-gradient(circle at center,rgba(255,255,255,0.05),transparent); z-index:3;}
+.hero-content{position:relative;z-index:4;text-align:center;color:white;}
+.hero-content h1{font-family:'Playfair Display',serif;font-size:4rem;line-height:1.1;text-shadow:0 10px 20px rgba(0,0,0,0.4);}
+.hero-content p{font-size:1.7rem;margin-top:0.5rem;opacity:0.95;}
+
+/* Steam */
+.steam{position:absolute;bottom:20px;left:50%;width:30px;height:120px;filter:blur(0.5px);opacity:0.7;animation:steamRise 5s ease-in-out infinite;}
+@keyframes steamRise{0%{transform:translateY(0) scale(0.9) rotate(0deg);opacity:0.3;}50%{transform:translateY(-80px) scale(1.2) rotate(2deg);opacity:1;}100%{transform:translateY(0) scale(0.9) rotate(0deg);opacity:0.3;}}
+
+/* Floating coffee beans */
+.bean{position:absolute;width:12px;height:6px;background:var(--espresso);border-radius:50%;opacity:0.7;animation:beanDrift linear infinite;}
+@keyframes beanDrift{0%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-150px) rotate(180deg);}100%{transform:translateY(0) rotate(360deg);}}
+
+/* Courses Cards */
+.course-card{border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,0.96),rgba(255,255,255,0.9));box-shadow:0 20px 60px rgba(0,0,0,0.1);overflow:hidden;transition:all 0.5s cubic-bezier(.25,.9,.35,1);}
+.course-card:hover{transform:translateY(-15px) rotateX(2deg) rotateY(2deg) scale(1.04);box-shadow:0 40px 90px rgba(0,0,0,0.2);}
+.media{border-radius:15px;transition:transform 0.5s ease-out;}
+.media:hover{transform:scale(1.1) rotate(1deg);}
+
+/* Buttons */
+.btn{display:inline-block;font-weight:600;padding:0.7rem 1.8rem;border-radius:16px;transition:all 0.4s ease-out;position:relative;overflow:hidden;cursor:pointer;}
+.btn-car{background:var(--caramel);color:white;box-shadow:0 6px 20px rgba(198,168,125,0.4);}
+.btn-white{background:white;color:var(--espresso);border:1px solid var(--espresso);}
+.btn:hover{transform:translateY(-4px) scale(1.07);}
+.btn:after{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:rgba(255,255,255,0.15);transform:skewX(-25deg);transition:all 0.5s;}
+.btn:hover:after{left:100%;}
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(60px) scale(0.95);transition:all 0.7s cubic-bezier(.2,.9,.25,1);}
+.reveal-show{opacity:1;transform:translateY(0) scale(1);}
+
+/* Footer */
+footer{background:var(--espresso);color:white;padding:4rem 1rem;}
+footer a{color:white;opacity:0.7;}
+footer a:hover{opacity:1;text-decoration:underline;}
+</style>
+
+<style>
+  /* Subtle, professional red button */
+  .btn-red {
+    background: linear-gradient(135deg, #d84545, #b41f1f);
+    color: #fff !important;
+    padding: 10px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    transition: all 0.22s ease;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .btn-red:hover {
+    background: linear-gradient(135deg, #c83c3c, #a81c1c);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(180, 31, 31, 0.25);
+  }
+
+  .btn-red:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(180, 31, 31, 0.2);
+  }
+
+  /* Mobile full width */
+  @media (max-width: 768px) {
+    .btn-red.full-mobile {
+      width: 100%;
+    }
+  }
+</style>
+
+
+</head>
+<body class="antialiased relative overflow-x-hidden">
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-md">
+  <div class="max-w-[1400px] mx-auto flex justify-between items-center px-6 py-4">
+
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-4">
+      <img src="images/bm-logo-vertical-fuego-roast.min.png" alt="Barista mastery" class="w-[70px]">
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex gap-8 font-semibold text-sm">
+      <a class="nav-link" href="index.html">Courses</a>
+      <a class="nav-link" href="index.html">About</a>
+      <a class="nav-link" href="index.html">Contact</a>
+    </nav>
+
+    <!-- Buttons + Mobile Toggle -->
+    <div class="flex gap-3 items-center">
+    <button class="btn-red">Register</button>
+<button class="btn-red">Login</button>
+
+      <!-- Mobile Menu Toggle -->
+      <button id="mobileMenuBtn" class="md:hidden btn btn-white">☰</button>
+    </div>
+
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <nav id="mobileMenu"
+       class="md:hidden hidden flex-col bg-white shadow-lg border-t px-6 pb-4 animate-slide-down">
+
+    <div class="flex flex-col gap-3 mt-4">
+     <button class="btn-red full-mobile">Courses</button>
+<button class="btn-red full-mobile">About</button>
+<button class="btn-red full-mobile">Contact</button>
+
+    </div>
+  </nav>
+</header>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-layer hero-back"></div>
+  <div class="hero-layer hero-mid"></div>
+  <div class="hero-layer hero-front"></div>
+  <div class="hero-content">
+    <h1>MASTERY</h1>
+    
+  </div>
+
+  <!-- Steam -->
+  <svg class="steam" viewBox="0 0 40 120">
+    <path d="M20 120 C10 80 30 50 20 20 C10 10 15 0 20 0" stroke="white" stroke-width="2" fill="none"/>
+  </svg>
+</section>
+
+<!-- MAIN -->
+<main class="max-w-[1380px] mx-auto px-6 py-12 space-y-20">
+
+<!-- Generate Coffee Beans -->
+<script>
+for(let i=0;i<30;i++){
+  const b=document.createElement('div');
+  b.className='bean';
+  b.style.left=Math.random()*window.innerWidth+'px';
+  b.style.bottom='-20px';
+  b.style.width=(6+Math.random()*6)+'px';
+  b.style.height=(3+Math.random()*3)+'px';
+  b.style.animationDuration=(5+Math.random()*5)+'s';
+  b.style.animationDelay=Math.random()*5+'s';
+  document.body.appendChild(b);
+}
+</script>
+
+<!-- Foundation -->
+<section id="foundation" class="reveal course-card lg:flex gap-6 p-6">
+  <img src="images\bm-hero-barista-05.min.png" alt="Foundation" class="media lg:w-1/2">
+  <div class="lg:w-1/2 flex flex-col justify-center gap-4">
+    <h2 class="heading text-3xl">Master Course</h2>
+    <p class="text-sm text-gray-600">Ideal for professional baeistas</p>
+    <ul class="list-disc pl-5 text-gray-700 space-y-1">
+      <li>Understand coffee origins and processing</li>
+      <li>Operate espresso machines and grinders</li>
+      <li>Extract espresso and texture milk</li>
+      <li>Prepare espresso drinks and basic latte art</li>
+      <li>Apply hygiene and service standards</li>
+    </ul>
+    <div class="flex gap-6 mt-3">
+      <span>Duration: 3 hours</span>
+      <span>Fees: Kes 100,000.00 </span>
+    </div>
+    <a href="/" class="btn btn-car mt-4 magnetic w-fit">ENROLL NOW</a>
+  </div>
+</section>
+
+
+</main>
+
+<!-- FOOTER -->
+<footer class="mt-20">
+  <div class="max-w-[1400px] mx-auto grid md:grid-cols-3 gap-8">
+    <div>
+      <img src="images\bm-logo-vertical-fuego-crema.min.png" alt="EASC Logo" class="w-40 mb-4">
+    
+    </div>
+    <div>
+      <h6 class="font-semibold mb-3">Quick links</h6>
+      <ul class="space-y-2">
+        <li><a href="#foundation">Courses</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact">Location</a></li>
+      </ul>
+    </div>
+    <div>
+      <h6 class="font-semibold mb-3">Follow</h6>
+      <div class="flex gap-3">
+        <a href="#">IG</a>
+        <a href="#">FB</a>
+        <a href="#">YT</a>
+      </div>
+    </div>
+  </div>
+  <p class="text-center text-white/60 mt-8">© <span id="year"></span> Barista Mastery</p>
+</footer>
+
+<script>
+// Year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Magnetic buttons
+document.querySelectorAll('.magnetic').forEach(btn=>{
+  btn.addEventListener('mousemove',(e)=>{
+    const rect=btn.getBoundingClientRect();
+    const x=e.clientX-rect.left-rect.width/2;
+    const y=e.clientY-rect.top-rect.height/2;
+    btn.style.transform=`translate(${x*0.2}px, ${y*0.2}px)`;
+  });
+  btn.addEventListener('mouseleave',()=>{btn.style.transform='translate(0,0)';});
+});
+
+// Scroll reveal
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('reveal-show');}
+  });
+},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Hero parallax
+window.addEventListener('scroll',()=>{
+  const sc=window.scrollY*0.3;
+  document.querySelector('.hero-back').style.transform=`translateY(${sc}px)`;
+  document.querySelector('.hero-mid').style.transform=`translateY(${sc*0.5}px)`;
+});
+
+// Mobile menu toggle
+const mobileBtn = document.getElementById("mobileMenuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+mobileBtn.addEventListener("click", () => {
+  mobileMenu.classList.toggle("hidden");
+});
+</script>
+
+
+</body>
+</html>
