@@ -2,6 +2,66 @@
 <html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#" class="sticky-footer">
 
 <head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-51D20T67YL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-51D20T67YL');
+</script>
+
+
+<!-- META (Facebook + Instagram) Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){
+  if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
+  t=b.createElement(e);t.async=!0;t.src=v;
+  s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
+}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1129742769333144'); // 👈 replace
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=META_PIXEL_ID&ev=PageView&noscript=1"
+/></noscript>
+
+<!-- TikTok Pixel -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var tt=w[t]=w[t]||[];
+  tt.methods=["page","track","identify"];
+  tt.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};
+  for(var i=0;i<tt.methods.length;i++)tt.setAndDefer(tt,tt.methods[i]);
+  tt.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";tt._i=tt._i||[];tt._i.push([e,n,i])};
+  tt.load('TIKTOK_PIXEL_ID', {}); // 👈 replace
+}(window, document, 'ttq');
+ttq.page();
+</script>
+
+<!-- LinkedIn Insight Tag -->
+<script type="text/javascript">
+_linkedin_partner_id = "LINKEDIN_PARTNER_ID"; // 👈 replace
+window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+</script>
+<script type="text/javascript">
+(function(l) {
+  if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};window.lintrk.q=[];}
+  var s = document.getElementsByTagName("script")[0];
+  var b = document.createElement("script");
+  b.type="text/javascript";b.async=true;
+  b.src="https://snap.licdn.com/li.lms-analytics/insight.min.js";
+  s.parentNode.insertBefore(b, s);
+})(window._linkedin_data_partner_ids);
+</script>
+<noscript><img height="1" width="1" style="display:none;" alt=""
+src="https://px.ads.linkedin.com/collect/?pid=LINKEDIN_PARTNER_ID&fmt=gif" /></noscript>
+
+
+
     <meta charset="utf-8" />
     <noscript><style>form.antibot * :not(.antibot-message) { display: none !important; }</style>
 </noscript>
@@ -17,6 +77,10 @@
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 />
+
+
+
+
 
     <link rel="canonical" href="/" />
     <link rel="shortlink" href="/" />
@@ -300,10 +364,25 @@ footer a:hover{opacity:1;text-decoration:underline;}
 <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-md">
   <div class="max-w-[1400px] mx-auto flex justify-between items-center px-6 py-4">
 
-    <!-- Logo -->
-    <a href="/" class="flex items-center gap-4">
-      <img src="images/bm-logo-vertical-fuego-roast.min.png" alt="Barista mastery" class="w-[70px]">
-    </a>
+    <a href="/" class="flex items-center">
+
+  <!-- Mobile Logo -->
+  <img 
+    src="images/bm-logo-vertical-fuego-roast.min.png"
+    alt="Barista Mastery"
+    class="h-[36px] md:hidden"
+  >
+
+  <!-- Desktop Logo -->
+  <img 
+    src="images/bm-logo-vertical-fuego-roast.min.png"
+    alt="Barista Mastery"
+    class="hidden md:block w-[70px]"
+  >
+
+</a>
+
+
 
     <!-- Desktop Nav -->
     <nav class="hidden md:flex gap-8 font-semibold text-sm">
@@ -314,14 +393,65 @@ footer a:hover{opacity:1;text-decoration:underline;}
     </nav>
 
     <!-- Buttons + Mobile Toggle -->
-    <div class="flex gap-3 items-center">
-     <button class="btn-red" onclick="window.location.href='https://trackertelsystems.com/bm/trainingcalendar'">
+  <!-- ================== TRACKED BUTTONS ================== -->
+
+<button id="registerBtn" class="btn-red">
   Register
 </button>
 
-<button class="btn-red" onclick="window.location.href='https://trackertelsystems.com/bm/index'">
+<button id="loginBtn" class="btn-red">
   Login
 </button>
+
+<script>
+document.getElementById('registerBtn').addEventListener('click', function(e){
+  e.preventDefault(); // stop immediate redirect
+  console.log('Register button clicked');
+
+  // ------------------- Meta Pixel Tracking -------------------
+  try {
+    if(window.fbq){
+      fbq('track','Lead');
+      console.log('FB Pixel fired');
+    } else {
+      console.warn('FB Pixel not found');
+    }
+  } catch(err){
+    console.error('FB Pixel error:', err);
+  }
+
+  // ------------------- Redirect after slight delay -------------------
+  setTimeout(function(){
+    var url = 'https://trackertelsystems.com/bm/trainingcalendar';
+    // Optional UTM parameters
+    url += '?utm_source=instagram&utm_medium=social&utm_campaign=course_launch';
+    window.location.href = url;
+  }, 300); // 300ms is enough for Meta Pixel to fire
+});
+
+
+  // ------------------- LOGIN BUTTON -------------------
+  document.getElementById('loginBtn').addEventListener('click', function(e){
+    e.preventDefault();
+
+    // Track Login click if desired
+    if(window.gtag){
+      gtag('event','button_click',{
+        'event_category':'Login',
+        'event_label':'Login Button'
+      });
+    }
+
+    // Redirect after delay
+    setTimeout(function(){
+      var url = 'https://trackertelsystems.com/bm/index';
+      // Optional: append UTM params if needed
+      url += '?utm_source=instagram&utm_medium=social&utm_campaign=login_click';
+      window.location.href = url;
+    }, 200);
+  });
+</script>
+
 
       <!-- Mobile Menu Toggle -->
       <button id="mobileMenuBtn" class="md:hidden btn btn-white">☰</button>
@@ -329,18 +459,28 @@ footer a:hover{opacity:1;text-decoration:underline;}
 
   </div>
 
-  <!-- Mobile Dropdown Menu -->
-  <nav id="mobileMenu"
-       class="md:hidden hidden flex-col bg-white shadow-lg border-t px-6 pb-4 animate-slide-down">
+  <nav id="mobileMenu" class="md:hidden hidden flex-col bg-white shadow-lg border-t px-6 pb-4 animate-slide-down">
+  <div class="flex flex-col gap-3 mt-4">
 
-    <div class="flex flex-col gap-3 mt-4">
-     <button class="btn-red full-mobile">Courses</button>
-<button class="btn-red full-mobile">About</button>
-<button class="btn-red full-mobile">Contact</button>
-<button class="btn-red full-mobile">Equipment</button>
+    <button class="btn-red full-mobile" onclick="scrollAndClose('courses')">
+      Courses
+    </button>
 
-    </div>
-  </nav>
+    <button class="btn-red full-mobile" onclick="scrollAndClose('about')">
+      About
+    </button>
+
+    <button class="btn-red full-mobile" onclick="scrollAndClose('contact')">
+      Contact
+    </button>
+
+    <button class="btn-red full-mobile" onclick="scrollAndClose('equipment')">
+      Equipment
+    </button>
+
+  </div>
+</nav>
+
 </header>
 
 
@@ -577,7 +717,17 @@ setInterval(() => {
     
 <div  class="az-splitscreen-text content-width-1">
     
-            <div class="clearfix text-formatted field field--name-field-az-text-area field--type-text-long field--label-hidden field__item"><p class="h2 mb-3"><span class="text-blue">Brewing the next generation of coffee professionals</span></p> <br><span class="lead">We are an indipendent cofee training school led by an SCA and Italian Barista School Authorised Trainer, one of the few in Africa. Our team includes certified baristas, roasters and internationally certified Q-graders with over 70 years of combined expertise.</span></p><p></p></div>
+            <div id="about" class="clearfix text-formatted field field--name-field-az-text-area field--type-text-long field--label-hidden field__item">
+  <p class="h2 mb-3">
+    <span class="text-blue">Brewing the next generation of coffee professionals</span>
+  </p>
+  <br>
+  <span class="lead">
+    We are an independent coffee training school led by an SCA and Italian Barista School Authorised Trainer, one of the few in Africa. Our team includes certified baristas, roasters and internationally certified Q-graders with over 70 years of combined expertise.
+  </span>
+  <p></p>
+</div>
+
       
   </div>
   </div>
@@ -925,7 +1075,7 @@ setInterval(() => {
   </div>
       </div>
 </div>
-   <footer class="creative-footer pt-5 pb-4 position-relative overflow-hidden">
+   <footer id="contact" class="creative-footer pt-5 pb-4 position-relative overflow-hidden">
   <!-- Decorative Coffee Beans Background -->
   <div class="coffee-bg"></div>
 
@@ -1179,6 +1329,29 @@ document.getElementById("mobileMenuBtn").addEventListener("click", () => {
 });
 </script>
 
+<script>
+  document.querySelectorAll('#mobileMenu a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.add('hidden');
+    });
+  });
+</script>
+
+<script>
+function scrollAndClose(sectionId) {
+  const target = document.getElementById(sectionId);
+  const mobileMenu = document.getElementById('mobileMenu');
+  const headerHeight = document.querySelector('header').offsetHeight;
+
+  if (target) {
+    const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+  }
+
+  // Auto-close the mobile menu
+  mobileMenu.classList.add('hidden');
+}
+</script>
 
   </body>
 </html>
