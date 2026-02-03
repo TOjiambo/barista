@@ -392,8 +392,7 @@ footer a:hover{opacity:1;text-decoration:underline;}
       <a class="nav-link" href="#/">Equipment</a>
     </nav>
 
-    <!-- Buttons + Mobile Toggle -->
-  <!-- ================== TRACKED BUTTONS ================== -->
+<!-- ================== META-TRACKED BUTTONS ================== -->
 
 <button id="registerBtn" class="btn-red">
   Register
@@ -404,53 +403,57 @@ footer a:hover{opacity:1;text-decoration:underline;}
 </button>
 
 <script>
-document.getElementById('registerBtn').addEventListener('click', function(e){
-  e.preventDefault(); // stop immediate redirect
-  console.log('Register button clicked');
+  // ------------------- REGISTER BUTTON -------------------
+  document.getElementById('registerBtn').addEventListener('click', function(e){
+    e.preventDefault(); // stop immediate redirect
+    console.log('Register button clicked');
 
-  // ------------------- Meta Pixel Tracking -------------------
-  try {
-    if(window.fbq){
-      fbq('track','Lead');
-      console.log('FB Pixel fired');
-    } else {
-      console.warn('FB Pixel not found');
+    // Fire Meta Pixel Lead event
+    try {
+      if(window.fbq){
+        fbq('track','Lead');  // Sends Lead event to Meta
+        console.log('FB Pixel Lead fired on Register');
+      } else {
+        console.warn('FB Pixel not found');
+      }
+    } catch(err){
+      console.error('FB Pixel error:', err);
     }
-  } catch(err){
-    console.error('FB Pixel error:', err);
-  }
 
-  // ------------------- Redirect after slight delay -------------------
-  setTimeout(function(){
-    var url = 'https://trackertelsystems.com/bm/trainingcalendar';
-    // Optional UTM parameters
-    url += '?utm_source=instagram&utm_medium=social&utm_campaign=course_launch';
-    window.location.href = url;
-  }, 300); // 300ms is enough for Meta Pixel to fire
-});
-
+    // Redirect after slight delay to ensure pixel fires
+    setTimeout(function(){
+      var url = 'https://trackertelsystems.com/bm/trainingcalendar';
+      url += '?utm_source=instagram&utm_medium=social&utm_campaign=course_launch'; // optional UTM
+      window.location.href = url;
+    }, 300); // 300ms is enough for pixel to send data
+  });
 
   // ------------------- LOGIN BUTTON -------------------
   document.getElementById('loginBtn').addEventListener('click', function(e){
     e.preventDefault();
+    console.log('Login button clicked');
 
-    // Track Login click if desired
-    if(window.gtag){
-      gtag('event','button_click',{
-        'event_category':'Login',
-        'event_label':'Login Button'
-      });
+    // Optional: Track login as Lead in Meta
+    try {
+      if(window.fbq){
+        fbq('track','Lead');  // Tracks login in Meta
+        console.log('FB Pixel Lead fired on Login');
+      } else {
+        console.warn('FB Pixel not found');
+      }
+    } catch(err){
+      console.error('FB Pixel error:', err);
     }
 
-    // Redirect after delay
+    // Redirect after slight delay
     setTimeout(function(){
       var url = 'https://trackertelsystems.com/bm/index';
-      // Optional: append UTM params if needed
-      url += '?utm_source=instagram&utm_medium=social&utm_campaign=login_click';
+      url += '?utm_source=instagram&utm_medium=social&utm_campaign=login_click'; // optional UTM
       window.location.href = url;
-    }, 200);
+    }, 300);
   });
 </script>
+
 
 
       <!-- Mobile Menu Toggle -->
